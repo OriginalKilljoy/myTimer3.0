@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stopWatch{
+            height: 275px;
+            width: 275px;
+            background-color: aliceblue;
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            border-radius: 25%;
+            align-items: center;
+        }
+
+        .seconds{
+            height: 50px;
+            width: 50px;
+            background-color: antiquewhite;
+            border: 2px solid black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: large;
+            padding: 2px;
+            align-content: center;
+            margin: 5px;
+            border-radius: 10%;
+        }
+
+        .text{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: large;
+
+        }
+
+        .rounds{
+            height: 90px;
+            width: 150px;
+            background-color: antiquewhite;
+            border: 2px solid black;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 5px;
+            border-radius: 10%;
+        }
+
+        .button{
+            margin: 2px;
+            background-color: antiquewhite;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="stopWatch">
+    <div id="clock" class="seconds"></div><div class="text">Rounds:</div><div id="rounds" class="rounds"></div>
+    <button class="button" onclick="startTimer()">Start</button>
+    <button class="button" onclick="setRounds()">Round</button>
+    <button class="button" onclick="stopTimer()">Stop</button>
+</div>
+
+<script>
+    const clock = document.getElementById('clock'); 
+    const roundTime = document.getElementById('rounds')
+    let seconds = 0;
+    var timer;
+
+    function startTimer(){
+        setInterval(countSeconds, 1000);
+    }
+
+    function countSeconds(){
+        clock.innerHTML = seconds;
+        seconds++;
+    }
+
+    function setRounds(){
+        roundTime.innerHTML += `<li>${seconds-1} seconds</li>`;
+        clearInterval(timer);
+        seconds = 0;
+    }
+
+    function stopTimer(){
+        location.reload()
+    }
+
+</script>
+
+
+</body>
+</html>
